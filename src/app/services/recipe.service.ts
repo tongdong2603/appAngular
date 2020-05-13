@@ -2,10 +2,12 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {Recipe} from '../models/recipe.model';
 import {IngredientModel} from '../models/ingredient.model';
 import {ShoppingListService} from '../services/shopping-list.service';
+import {Subject} from 'rxjs';
 
 @Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter <Recipe> ();
+  recipeListChanged = new Subject <Recipe[]>();
   private recipes: Recipe [] = [new Recipe('Test name',
     'tesst  description',
     // tslint:disable-next-line:max-line-length
@@ -25,5 +27,10 @@ export class RecipeService {
   }
   getRecipeById(id: number) {
     return this.recipes[id];
+  }
+
+  deleteRecipe(id: number) {
+    this.recipes.splice(id, 1);
+    this.recipeListChanged.next(this.recipes.slice());
   }
 }

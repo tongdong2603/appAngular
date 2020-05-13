@@ -35,4 +35,12 @@ export class RecipeService {
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
   }
+
+  deleteRecipe(id: number) {
+
+  }
+
+  deleteRecipe(id: number) {
+
+  }
 }

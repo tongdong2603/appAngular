@@ -22,4 +22,9 @@ export class ShoppingListComponent implements OnInit {
   onIngredientAdded(ingredient: IngredientModel) {
     this.shoppingListService.onIngredientAdded(ingredient);
   }
+
+  onEdditIngredient(index: number) {
+    this.shoppingListService.startingEddit.next(index);
+
+  }
 }
